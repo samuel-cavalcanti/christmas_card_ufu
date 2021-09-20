@@ -7,16 +7,19 @@ public class App {
 
     public static void main(String[] args) {
 
-        String[] texts = {"Mamãe te amo", "EU AMO PÃO DE QUEIJO", "PÃO DE QUEIJO COM PANETTONE!", "shrek is:"};
-        Widget body = new Heart();
-        for (String text : texts) {
-            Widget header = new Text(text);
-            ChristmasCard card = new ChristmasCard(header, body);
+        Widget card = new ChristmasText();
+        card = new Margin(1, 2, card);
+        card = new Heart(card);
+        card = new Repeat(card, 2);
+        card.build();
+
+        for (int i = 0; i < 5; i++) {
+            card = new ChristmasText();
+            card = new Margin(1, i + 2, card);
+            card = new Repeat(card, i);
+            card = new Heart(card);
             card.build();
         }
 
-        Widget header = new Text("Querido Professor, por favor considerar dar nota 10 nesse trabalho");
-        ChristmasCard card = new ChristmasCard(header, body);
-        card.build();
     }
 }
